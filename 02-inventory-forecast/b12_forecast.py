@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 
 MODEL = "llama3.2:3b"
 
-#Create fake historical sales data
+#Create historical sales data
 # This simulates 52 weeks of B12 shot sales (1 year)
-# In a real pharmacy this would come from your POS system
+# This would come from POS system
 data = {
     "ds": pd.date_range(start="2025-01-01", periods=52, freq="W"),
     "y": [
