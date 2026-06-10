@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 MODEL = "llama3.2:3b"
 
-# --- STEP 1: Create fake historical sales data ---
+#Create fake historical sales data
 # This simulates 52 weeks of B12 shot sales (1 year)
 # In a real pharmacy this would come from your POS system
 data = {
@@ -23,7 +23,7 @@ data = {
 df = pd.DataFrame(data)
 print("Historical data loaded: " + str(len(df)) + " weeks of sales")
 
-# --- STEP 2: Build and train the forecast model ---
+#Build and train the forecast model
 print("Training forecast model...")
 model = Prophet(
     seasonality_mode="multiplicative",
@@ -32,12 +32,12 @@ model = Prophet(
 )
 model.fit(df)
 
-# --- STEP 3: Predict the next 12 weeks ---
+#Predict the next 12 weeks
 print("Forecasting next 12 weeks...")
 future = model.make_future_dataframe(periods=12, freq="W")
 forecast = model.predict(future)
 
-# --- STEP 4: Save the chart as an image ---
+#Save the chart as an image
 print("Generating chart...")
 fig = model.plot(forecast)
 plt.title("B12 Shot Demand Forecast - Next 12 Weeks")
@@ -48,13 +48,13 @@ chart_path = "02-inventory-forecast/forecast_chart.png"
 plt.savefig(chart_path, dpi=150, bbox_inches="tight")
 print("Chart saved to: " + chart_path)
 
-# --- STEP 5: Pull key numbers for the AI summary ---
+#Pull key numbers for the AI summary
 last_4_weeks_avg = int(df["y"].tail(4).mean())
 next_12_weeks_avg = int(forecast["yhat"].tail(12).mean())
 peak_week = forecast.tail(12).loc[forecast["yhat"].idxmax(), "ds"].strftime("%B %d %Y")
 peak_units = int(forecast["yhat"].max())
 
-# --- STEP 6: Ask AI to write an inventory recommendation ---
+#Ask AI to write an inventory recommendation 
 print("Generating AI inventory recommendation...")
 prompt = (
     "You are a pharmacy inventory manager. "
