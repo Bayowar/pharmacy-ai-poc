@@ -29,7 +29,7 @@ st.markdown("""
 st.markdown("""
     <div class="header-bar">
         <h1> Rx Compound Pharmacy</h1>
-        <p>AI-Powered Inventory & Compliance Dashboard</p>
+        <p>Inventory & Compliance Dashboard</p>
     </div>
 """, unsafe_allow_html=True)
 
@@ -72,7 +72,7 @@ def load_batch_data():
 
 if page == "Inventory & Forecast":
     st.subheader("B12 Demand Forecast — Next 12 Weeks")
-    st.write("Building forecast model, please wait...")
+    st.write("Building forecast model...")
 
     data = {
         "ds": pd.date_range(start="2025-01-01", periods=52, freq="W"),
@@ -88,7 +88,7 @@ if page == "Inventory & Forecast":
     future = m.make_future_dataframe(periods=12, freq="W")
     forecast = m.predict(future)
 
-    st.write(" Forecast complete!")
+    st.write(" Forecast complete")
 
     current_avg = int(df["y"].tail(4).mean())
     forecast_avg = int(forecast["yhat"].tail(12).mean())
@@ -164,7 +164,7 @@ if page == "Inventory & Forecast":
                 response = ollama.chat(model=MODEL, messages=[{"role": "user", "content": prompt}])
                 st.success(response["message"]["content"])
     else:
-        st.info(" AI recommendations available when running locally with Ollama.")
+        st.info(" Recommendations available when running locally with Ollama.")
 
 elif page == "Batch Compliance":
     st.subheader(" Batch Expiry & Compliance Tracker")
