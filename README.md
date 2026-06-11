@@ -1,5 +1,5 @@
 # Pharmacy Up-Scaling
-An end-to-end, locally deployed AI and data analytics solution engineered to optimize independent pharmacy operations, automate repetitive workflows, and enhance regulatory compliance. Built entirely with free, open-source tools and a localized Large Language Model (LLM) to ensure strict **data privacy** and zero operational subscription costs.
+An end-to-end, locally deployed model and data analytics solution engineered to optimize independent pharmacy operations, automate repetitive workflows, and enhance regulatory compliance. Built entirely with free, open-source tools and a localized Large Language Model (LLM) to ensure strict **data privacy** and zero operational subscription costs.
 
 **Live Dashboard Available:** Built using Streamlit to visualize predictive inventory and batch compliance tracking in real-time.
 
