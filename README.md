@@ -7,7 +7,7 @@ An end-to-end, locally deployed AI and data analytics solution engineered to opt
 
 ## The Motivation
 
-WHile working for an Independent pharmacy in graduate school, I noticed that Independent pharmacies operate on exceptionally lean teams and tight margins. Valuable hours are often consumed by manual administrative overhead—such as drafting patient communications, auditing expiration dates, labelling, and compiling performance metrics. 
+WHile working for an Independent pharmacy in graduate school, I noticed that Independent pharmacies operate on exceptionally lean teams and tight margins. Valuable hours are often consumed by manual administrative overhead; such as drafting patient communications, auditing expiration dates, labelling, and compiling performance metrics. 
 
 This project serves to demonstrate to healthcare management that modern, privacy-preserving data tools can be deployed **today** using entirely free, local infrastructure, shifting administrative hours back to high-value clinical patient care.
 
