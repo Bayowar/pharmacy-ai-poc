@@ -1,0 +1,49 @@
+RX COMPOUND PHARMACY
+MONTHLY KPI REPORT
+Generated: June 10 2026
+============================================================
+
+
+============================================================
+PHARMACY KPI DASHBOARD
+Report Date: June 10 2026
+Period: June 2026
+============================================================
+
+--- SALES ---
+  B12 Units Sold:          1240
+  Total Revenue:           $18600
+  vs Last Month:           +12%
+  Avg Order Value:         $15
+
+--- PRESCRIBERS ---
+  Active Prescribers:      18
+  Top Prescriber:          Dr. Sarah Kim (142 scripts)
+  New This Month:          3
+  Lost This Month:         1
+
+--- INVENTORY ---
+  Batches Compounded:      38
+  Units Wasted/Expired:    24
+  Inventory Value:         $4200
+  LOW STOCK ALERT:         Methylcobalamin API less than 2 week supply
+
+--- STAFF ---
+  Total Staff:             10
+  Overtime Hours:          14
+  Open Shifts:             2
+
+--- PATIENTS ---
+  Active Patients:         312
+  New This Month:          28
+  Refill Rate:             73%
+  Overdue for Refill:      41
+
+
+EXECUTIVE SUMMARY
+============================================================
+Here is a professional executive summary based on the provided KPI data:
+
+The pharmacy's June 2026 performance saw significant growth in revenue, with a 12% increase compared to the previous month, totaling $18,600. Notably, Dr. Sarah Kim maintained her position as our top prescriber, dispensing 142 scripts, and we successfully onboarded three new active prescribers. However, we also encountered a notable risk with a low stock alert for Methylcobalamin API, which will need to be addressed promptly to avoid any potential disruptions to patient care. To mitigate this risk, I recommend that we increase the frequency of our API inventory checks and develop a contingency plan to ensure timely replenishment. Specifically, I suggest allocating an additional $500 from the current budget to enhance our inventory management system in the coming month.
+
+Let me know if you want any adjustments!
