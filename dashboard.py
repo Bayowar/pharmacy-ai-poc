@@ -1,7 +1,12 @@
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
-import ollama
+OLLAMA_AVAILABLE = False
+try:
+    import ollama
+    OLLAMA_AVAILABLE = True
+except ImportError:
+    pass
 from prophet import Prophet
 from datetime import date, timedelta
 
@@ -144,22 +149,25 @@ if page == "Inventory & Forecast":
     st.dataframe(ft, use_container_width=True, hide_index=True)
 
     st.subheader(" Inventory Recommendation")
-    if st.button("Generate AI Recommendation"):
-        with st.spinner("Asking AI for inventory advice..."):
-            prompt = (
-                "You are a pharmacy inventory manager. "
-                "Write a 4 sentence inventory planning recommendation. "
-                "Current weekly B12 average: " + str(current_avg) + " units. "
-                "Forecasted weekly average: " + str(forecast_avg) + " units. "
-                "Expected growth: " + str(growth) + " percent. "
-                "Peak demand: " + str(peak_units) + " units. "
-                "Give specific reorder and stocking advice."
-            )
-            response = ollama.chat(model=MODEL, messages=[{"role": "user", "content": prompt}])
-            st.success(response["message"]["content"])
+    if OLLAMA_AVAILABLE:
+        if st.button("Generate AI Recommendation"):
+            with st.spinner("Asking AI for inventory advice..."):
+                prompt = (
+                    "You are a pharmacy inventory manager. "
+                    "Write a 4 sentence inventory planning recommendation. "
+                    "Current weekly B12 average: " + str(current_avg) + " units. "
+                    "Forecasted weekly average: " + str(forecast_avg) + " units. "
+                    "Expected growth: " + str(growth) + " percent. "
+                    "Peak demand: " + str(peak_units) + " units. "
+                    "Give specific reorder and stocking advice."
+                )
+                response = ollama.chat(model=MODEL, messages=[{"role": "user", "content": prompt}])
+                st.success(response["message"]["content"])
+    else:
+        st.info(" AI recommendations available when running locally with Ollama.")
 
 elif page == "Batch Compliance":
-    st.subheader("🧪 Batch Expiry & Compliance Tracker")
+    st.subheader(" Batch Expiry & Compliance Tracker")
     batches = load_batch_data()
 
     expired = sum(1 for b in batches if b["Status"] == "EXPIRED")
@@ -217,19 +225,22 @@ elif page == "Batch Compliance":
     )
     st.plotly_chart(fig2, use_container_width=True)
 
-    st.subheader(" AI Compliance Report")
-    if st.button("Generate Compliance Report"):
-        with st.spinner("Generating USP 797 compliance report..."):
-            summary = "\n".join([
-                b["Batch ID"] + " | " + b["Compound"] + " | " +
-                str(b["Days Left"]) + " days left | " + b["Status"]
-                for b in batches
-            ])
-            prompt = (
-                "You are a USP 797 pharmacy compliance officer. "
-                "Review these batch expiry statuses and write a formal "
-                "action report with clear priorities. Keep it under 150 words: "
-                "\n\n" + summary
-            )
-            response = ollama.chat(model=MODEL, messages=[{"role": "user", "content": prompt}])
-            st.info(response["message"]["content"])
+    st.subheader("Compliance Report")
+    if OLLAMA_AVAILABLE:
+        if st.button("Generate Compliance Report"):
+            with st.spinner("Generating USP 797 compliance report..."):
+                summary = "\n".join([
+                    b["Batch ID"] + " | " + b["Compound"] + " | " +
+                    str(b["Days Left"]) + " days left | " + b["Status"]
+                    for b in batches
+                ])
+                prompt = (
+                    "You are a USP 797 pharmacy compliance officer. "
+                    "Review these batch expiry statuses and write a formal "
+                    "action report with clear priorities. Keep it under 150 words: "
+                    "\n\n" + summary
+                )
+                response = ollama.chat(model=MODEL, messages=[{"role": "user", "content": prompt}])
+                st.info(response["message"]["content"])
+    else:
+        st.info("Compliance reports available when running locally with Ollama.")
